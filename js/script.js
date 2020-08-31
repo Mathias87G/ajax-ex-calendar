@@ -55,8 +55,8 @@ function insertHolidays(data){
       },
       success: function(risposta){
         for (var i = 0; i < risposta.response.length; i++){
-          var listItem = $('li[data-complete_date="'+ risposta.response[i].date + '"]');
-          listItem.append(' - ' + risposta.response[i].name);
+          var listItem = $('div[data-complete_date="'+ risposta.response[i].date + '"]');
+          listItem.append('  ' + risposta.response[i].name);
           listItem.addClass('holiday');
         }
       },

@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     <link rel="stylesheet" href="css/style.css">
@@ -16,16 +17,15 @@
       <div class="month-selection">
         <button id="prev">Prev</button>
         <h1 class="month" data-this_date="2018-01-01">
-          <span class="month"></span class="year">
         </h1>
         <button id="next">Next</button>
       </div>
 
-      <ul class="month-list"></ul>
+      <div class="month-list"></div>
     </div>
 
     <script id="day-template" type="text/x-handlebars-template">
-      <li data-complete_date="{{completeDate}}">{{day}} {{month}}</li>
+      <div data-complete_date="{{completeDate}}" class="day">{{day}} {{month}}</div>
     </script>
 
 

@@ -9,13 +9,51 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-h1, button {
-  display: inline-block;
-  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .holiday {
   color: red;
+}
+
+.month-selection {
+  margin: 20px 0;
+  display: flex;
+}
+
+.month {
+  padding: 0 10px;
+}
+
+#prev, #next {
+  padding: 5px 10px;
+  background-color: orange;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.month-list {
+  width: 700px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-size: 13px;
+}
+
+.day:nth-child(7n+1) {
+  border-left: 1px solid black;
+}
+
+.day:nth-child(-n+7) {
+  border-top: 1px solid black;
 }
