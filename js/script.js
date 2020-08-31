@@ -11,15 +11,39 @@
 // Evidenziare le festività nella lista
 
 $(document).ready(function(){
-
-  var attributo = $('h1').data('this_date');
-  console.log(attributo);
-
-  var currentDate = moment('2018-01-01')
+  // creo data di partenza
+  var currentDate = moment('2018-01-01');
+  // inserisco le funzioni per compilare html
   insertDays(currentDate);
   insertHolidays(currentDate);
+  // funzione per andare avanti con il bottone next
+  $('#next').click(function(){
+    if (currentDate.month() == 11){
+      // controllo per non sforare dicembre
+      alert('Non puoi andare avanti');
+    } else {
+    currentDate.add(1, 'M');
+    // Svuoto html e ripopolo
+    $('.month-list').empty();
+    insertDays(currentDate);
+    insertHolidays(currentDate);
+    }
+  });
+  // funzione per tornare indietro con prev (stesse funzionalità tranne controllo gennaio)
+  $('#prev').click(function(){
+    if (currentDate.month() == 0){
+      alert('Non puoi tornare indietro');
+    } else {
+    currentDate.subtract(1, 'M');
+    $('.month-list').empty();
+    insertDays(currentDate);
+    insertHolidays(currentDate);
+    }
+  });
+
 });
 
+// funzione per le festività
 function insertHolidays(data){
   $.ajax(
     {
@@ -43,11 +67,11 @@ function insertHolidays(data){
   )
 }
 
+// Funzione per inserire i giorni nell'html
 function insertDays(data){
   var month = data.format('MMMM');
   var year = data.format('YYYY');
   $('h1.month').html(month + ' ' + year);
-
   var daysMonth = data.daysInMonth();
   for (var i = 1; i <= daysMonth; i++){
     var source = $('#day-template').html();
@@ -62,6 +86,7 @@ function insertDays(data){
   }
 }
 
+// funzione per aggiungere lo zero
 function addZero(n){
   if (n < 10){
     return '0' + n;
