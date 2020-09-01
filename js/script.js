@@ -12,35 +12,18 @@
 
 $(document).ready(function(){
   // creo data di partenza
-  var currentDate = moment('2018-01-01');
+  var currentDate = moment($('h1.month').attr('data-this_date'));
   // inserisco le funzioni per compilare html
   insertDays(currentDate);
   insertHolidays(currentDate);
   // funzione per andare avanti con il bottone next
   $('#next').click(function(){
-    if (currentDate.month() == 11){
-      // controllo per non sforare dicembre
-      alert('Non puoi andare avanti');
-    } else {
-    currentDate.add(1, 'M');
-    // Svuoto html e ripopolo
-    $('.month-list').empty();
-    insertDays(currentDate);
-    insertHolidays(currentDate);
-    }
+    next(currentDate);
   });
-  // funzione per tornare indietro con prev (stesse funzionalità tranne controllo gennaio)
+  // funzione per tornare indietro con prev
   $('#prev').click(function(){
-    if (currentDate.month() == 0){
-      alert('Non puoi tornare indietro');
-    } else {
-    currentDate.subtract(1, 'M');
-    $('.month-list').empty();
-    insertDays(currentDate);
-    insertHolidays(currentDate);
-    }
+    prev(currentDate);
   });
-
 });
 
 // funzione per le festività
@@ -92,4 +75,30 @@ function addZero(n){
     return '0' + n;
   }
   return n;
+}
+
+// funzione next
+function next(data) {
+  if (data.month() == 11){
+    // controllo per non sforare dicembre
+    alert('Non puoi andare avanti');
+  } else {
+  data.add(1, 'M');
+  // Svuoto html e ripopolo
+  $('.month-list').empty();
+  insertDays(data);
+  insertHolidays(data);
+  }
+}
+
+// funzione Prev
+function prev(data) {
+  if (data.month() == 0){
+    alert('Non puoi tornare indietro');
+  } else {
+  data.subtract(1, 'M');
+  $('.month-list').empty();
+  insertDays(data);
+  insertHolidays(data);
+  }
 }
