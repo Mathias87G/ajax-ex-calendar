@@ -12,6 +12,7 @@
 
 $(document).ready(function(){
   // creo data di partenza
+  moment.locale('it')
   var currentDate = moment($('h1.month').attr('data-this_date'));
   // inserisco le funzioni per compilare html
   insertDays(currentDate);
@@ -52,7 +53,7 @@ function insertHolidays(data){
 
 // Funzione per inserire i giorni nell'html
 function insertDays(data){
-  var month = data.format('MMMM');
+  var month = capitalize(data.format('MMMM'));
   var year = data.format('YYYY');
   $('h1.month').html(month + ' ' + year);
   var daysMonth = data.daysInMonth();
@@ -102,3 +103,8 @@ function prev(data) {
   insertHolidays(data);
   }
 }
+
+// funzione capitalize
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
